@@ -143,8 +143,8 @@
 
     <TextView
         android:id="@+id/brugteBogstaver"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="91dp"
+        android:layout_height="20dp"
         tools:layout_editor_absoluteX="201dp"
         tools:layout_editor_absoluteY="166dp" />
 
