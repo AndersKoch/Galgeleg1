@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public ImageView visGalge;
     public Galgelogik spil = new Galgelogik();
     public EditText bogstav;
-    public Button knap;
+    public Button knap, knapGenstart;
     public TextView textSejre, textNederlag, textTitel, ord, brugteBogstaver;
     int tælSejr, tælNederlag;
 
@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bogstav = findViewById(R.id.bogstav);
         knap = findViewById(R.id.knap);
         knap.setOnClickListener(this);
+        knapGenstart = findViewById(R.id.knapGenstart);
+        knapGenstart.setOnClickListener(this);
 
         textSejre = findViewById(R.id.textSejre);
         textNederlag = findViewById(R.id.textNederlag);
@@ -44,8 +46,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (v == knap) {
             spil.gætBogstav(bogstav.getText().toString());
             ord.setText(spil.getSynligtOrd());
-            String bogstavGæt = bogstav.getText().toString();
-            brugteBogstaver.setText(bogstavGæt);
+            String bogstavGæt = bogstav.getText().toString().toUpperCase();
+
 
             billedeChanger();
 
@@ -54,23 +56,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } else if (!spil.erSidsteBogstavKorrekt() && spil.getAntalForkerteBogstaver() < 6) {
                 Toast.makeText(this, "Ikke rigtigt. Dette var dit " + (spil.getAntalForkerteBogstaver()) + ". forkerte gæt", Toast.LENGTH_SHORT).show();
             } else if (spil.erSpilletVundet()){
-                Toast.makeText(this, "FEDT MAN! DU GÆTTEDE ORDET! Ordet var: " + spil.getOrdet(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "FEDT MAN! DU GÆTTEDE ORDET! Ordet var: " + spil.getOrdet().toUpperCase(), Toast.LENGTH_SHORT).show();
                 tælSejr++;
                 textSejre.setText("Sejre: " + tælSejr);
+                knapGenstart.setVisibility(View.VISIBLE);
             } else if (spil.erSpilletTabt()){
                 Toast.makeText(this, "Så tæt på, men du har tabt! Ordet var: " + spil.getOrdet(), Toast.LENGTH_SHORT).show();
                 tælNederlag++;
                 textSejre.setText("Nederlag: " + tælNederlag);
+                knapGenstart.setVisibility(View.VISIBLE);
+
             }
 
-
-            // for (int i = 0; i < spil.getBrugteBogstaver().size(); i++){
-            //   currentWord = currentWord + " " + spil.getBrugteBogstaver().get(i);
-
-            //}
-            //brugteBogstaver.setText(currentWord);
+            brugteBogstaver.append(" " + bogstavGæt);
 
         }
+        else if (v == knapGenstart){
+            genstartSpil();
+        }
+
+
+
+    }
+
+    public void genstartSpil(){
+        knapGenstart.setVisibility(View.INVISIBLE);
+        spil.nulstil();
+        billedeChanger();
+        ord.setText(spil.getSynligtOrd());
+        brugteBogstaver.setText("Brugte bogstaver:");
 
 
     }
