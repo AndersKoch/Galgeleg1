@@ -10,8 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     public ImageView visGalge;
     public Galgelogik spil = new Galgelogik();
@@ -47,21 +45,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             spil.gætBogstav(bogstav.getText().toString());
             ord.setText(spil.getSynligtOrd());
             String bogstavGæt = bogstav.getText().toString().toUpperCase();
-
-
             billedeChanger();
 
             if (spil.erSidsteBogstavKorrekt() && !spil.erSpilletVundet()) {
                 Toast.makeText(this, "Rigtigt gæt! Du gættede på: " + bogstav.getText().toString().toUpperCase(), Toast.LENGTH_SHORT).show();
             } else if (!spil.erSidsteBogstavKorrekt() && spil.getAntalForkerteBogstaver() < 6) {
                 Toast.makeText(this, "Ikke rigtigt. Dette var dit " + (spil.getAntalForkerteBogstaver()) + ". forkerte gæt", Toast.LENGTH_SHORT).show();
-            } else if (spil.erSpilletVundet()){
-                Toast.makeText(this, "FEDT MAN! DU GÆTTEDE ORDET! Ordet var: " + spil.getOrdet().toUpperCase(), Toast.LENGTH_SHORT).show();
+            } else if (spil.erSpilletVundet()) {
+                Toast.makeText(this, "FEDT MAN! DU GÆTTEDE ORDET! Ordet var: " + spil.getOrdet().toUpperCase(), Toast.LENGTH_LONG).show();
                 tælSejr++;
                 textSejre.setText("Sejre: " + tælSejr);
                 knapGenstart.setVisibility(View.VISIBLE);
-            } else if (spil.erSpilletTabt()){
-                Toast.makeText(this, "Så tæt på, men du har tabt! Ordet var: " + spil.getOrdet(), Toast.LENGTH_SHORT).show();
+            } else if (spil.erSpilletTabt()) {
+                Toast.makeText(this, "Så tæt på, men du har tabt! Ordet var: " + spil.getOrdet(), Toast.LENGTH_LONG).show();
                 tælNederlag++;
                 textSejre.setText("Nederlag: " + tælNederlag);
                 knapGenstart.setVisibility(View.VISIBLE);
@@ -69,17 +65,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
             brugteBogstaver.append(" " + bogstavGæt);
-
-        }
-        else if (v == knapGenstart){
+        } else if (v == knapGenstart) {
             genstartSpil();
         }
 
 
-
     }
 
-    public void genstartSpil(){
+    public void genstartSpil() {
         knapGenstart.setVisibility(View.INVISIBLE);
         spil.nulstil();
         billedeChanger();
@@ -90,26 +83,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void billedeChanger() {
-        if (spil.getAntalForkerteBogstaver() == 0){
+        if (spil.getAntalForkerteBogstaver() == 0) {
             visGalge.setImageResource(R.drawable.galge1);
         }
-        if (spil.getAntalForkerteBogstaver() == 1){
+        if (spil.getAntalForkerteBogstaver() == 1) {
             visGalge.setImageResource(R.drawable.galge2);
         }
-        if (spil.getAntalForkerteBogstaver() == 2){
+        if (spil.getAntalForkerteBogstaver() == 2) {
             visGalge.setImageResource(R.drawable.galge3);
         }
-        if (spil.getAntalForkerteBogstaver() == 3){
+        if (spil.getAntalForkerteBogstaver() == 3) {
             visGalge.setImageResource(R.drawable.galge4);
         }
-        if (spil.getAntalForkerteBogstaver() == 4){
+        if (spil.getAntalForkerteBogstaver() == 4) {
             visGalge.setImageResource(R.drawable.galge5);
         }
-        if (spil.getAntalForkerteBogstaver() == 5){
+        if (spil.getAntalForkerteBogstaver() == 5) {
             visGalge.setImageResource(R.drawable.galge6);
         }
 
-        if (spil.getAntalForkerteBogstaver() == 6){
+        if (spil.getAntalForkerteBogstaver() == 6) {
             visGalge.setImageResource(R.drawable.galge7);
         }
 
