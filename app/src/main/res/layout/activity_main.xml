@@ -13,48 +13,81 @@
         android:layout_height="197dp"
         android:layout_marginStart="62dp"
         android:layout_marginLeft="62dp"
-        android:layout_marginTop="166dp"
+        android:layout_marginTop="250dp"
         android:layout_marginEnd="62dp"
         android:layout_marginRight="62dp"
-        android:layout_marginBottom="117dp"
+        android:layout_marginBottom="33dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/galge1" />
+
+    <EditText
+        android:id="@+id/bogstav"
+        android:layout_width="121dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:inputType="textShortMessage"
+        android:maxLength="1"
+        tools:layout_editor_absoluteX="61dp"
+        tools:layout_editor_absoluteY="183dp" />
+
+    <Button
+        android:id="@+id/knap"
+        android:layout_width="108dp"
+        android:layout_height="36dp"
+        android:background="@color/colorPrimary"
+        android:text="GÆT"
+        tools:layout_editor_absoluteX="196dp"
+        tools:layout_editor_absoluteY="183dp" />
+
+    <TextView
+        android:id="@+id/textSejre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="107dp"
+        android:layout_marginLeft="107dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="258dp"
+        android:layout_marginRight="258dp"
+        android:layout_marginBottom="662dp"
+        android:text="Sejre: 0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/galge1" />
+        app:layout_constraintVertical_bias="0.024" />
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="121dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="62dp"
-        android:layout_marginLeft="62dp"
-        android:layout_marginTop="102dp"
-        android:layout_marginEnd="139dp"
-        android:layout_marginRight="139dp"
-        android:layout_marginBottom="342dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Lav et gæt"
+    <TextView
+        android:id="@+id/textNederlag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="242dp"
+        android:layout_marginLeft="242dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="97dp"
+        android:layout_marginRight="97dp"
+        android:layout_marginBottom="662dp"
+        android:text="Nederlag: 0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.024" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="108dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="196dp"
-        android:layout_marginLeft="196dp"
-        android:layout_marginTop="102dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="342dp"
-        android:background="@color/colorPrimary"
-        android:text="GÆT"
+    <TextView
+        android:id="@+id/textTitel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="132dp"
+        android:layout_marginBottom="557dp"
+        android:text="Skriv ét bogstav og klik på gæt!"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.092"
+        tools:layout_editor_absoluteX="70dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
