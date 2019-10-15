@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ord = findViewById(R.id.ordGæt);
 
         ord.setText(spil.getSynligtOrd());
+
+
     }
 
     public void onClick(View v) {
@@ -59,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } else if (spil.erSpilletTabt()) {
                 Toast.makeText(this, "Så tæt på, men du har tabt! Ordet var: " + spil.getOrdet(), Toast.LENGTH_LONG).show();
                 tælNederlag++;
-                textSejre.setText("Nederlag: " + tælNederlag);
+                textNederlag.setText("Nederlag: " + tælNederlag);
                 knapGenstart.setVisibility(View.VISIBLE);
 
             }
