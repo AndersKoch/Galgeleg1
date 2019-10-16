@@ -16,6 +16,7 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     public ImageView visGalge;
     public Galgelogik spil = new Galgelogik();
+    public Random random = new Random();
     public EditText bogstav;
     public Button knap, knapGenstart, hjælp;
     public TextView textSejre, textNederlag, textTitel, ord, brugteBogstaver;
@@ -54,16 +55,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String bogstavGæt = bogstav.getText().toString().toUpperCase();
             billedeChanger();
 
-            if (spil.erSidsteBogstavKorrekt() && !spil.erSpilletVundet()) {
+            if (spil.erSidsteBogstavKorrekt() && !spil.erSpilletVundet()) { //Hvis det korrekt, men spillet ikke er vundet
                 Toast.makeText(this, "Rigtigt gæt! Du gættede på: " + bogstav.getText().toString().toUpperCase(), Toast.LENGTH_SHORT).show();
-            } else if (!spil.erSidsteBogstavKorrekt() && spil.getAntalForkerteBogstaver() < 6) {
+            } else if (!spil.erSidsteBogstavKorrekt() && spil.getAntalForkerteBogstaver() < 6) { //Forkert, spil ikke vundet
                 Toast.makeText(this, "Ikke rigtigt. Dette var dit " + (spil.getAntalForkerteBogstaver()) + ". forkerte gæt", Toast.LENGTH_SHORT).show();
-            } else if (spil.erSpilletVundet()) {
+            } else if (spil.erSpilletVundet()) { //Sidste gæt var korrekt og ordet er gættet
                 Toast.makeText(this, "FEDT MAN! DU GÆTTEDE ORDET! Ordet var: " + spil.getOrdet().toUpperCase(), Toast.LENGTH_LONG).show();
                 tælSejr++;
                 textSejre.setText("Sejre: " + tælSejr);
                 knapGenstart.setVisibility(View.VISIBLE);
-            } else if (spil.erSpilletTabt()) {
+            } else if (spil.erSpilletTabt()) { //Sidste gæt var forkert og ordet er ikke gættet
                 Toast.makeText(this, "Så tæt på, men du har tabt! Ordet var: " + spil.getOrdet(), Toast.LENGTH_LONG).show();
                 tælNederlag++;
                 textNederlag.setText("Nederlag: " + tælNederlag);
@@ -71,16 +72,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
 
-            brugteBogstaver.append(" " + bogstavGæt);
+            brugteBogstaver.append(" " + bogstavGæt); //Tilføjer det gættede bogstav
         } else if (v == knapGenstart) {
             genstartSpil();
         }
-        else if (v == hjælp) {
-            Random random = new Random();
+        else if (v == hjælp) {                      //Vælger et tilfældigt bogstav i ordet
             String hjælpOrd = spil.getOrdet();
             int vælgBogstav = random.nextInt(hjælpOrd.length());
-            System.out.println("Random char selected: " + hjælpOrd.charAt(vælgBogstav));
-
             Toast.makeText(this, "Et af bogstaverne er: " + hjælpOrd.charAt(vælgBogstav), Toast.LENGTH_LONG).show();
 
         }
