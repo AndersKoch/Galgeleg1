@@ -10,11 +10,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Arrays;
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     public ImageView visGalge;
     public Galgelogik spil = new Galgelogik();
     public EditText bogstav;
-    public Button knap, knapGenstart;
+    public Button knap, knapGenstart, hjælp;
     public TextView textSejre, textNederlag, textTitel, ord, brugteBogstaver;
     int tælSejr, tælNederlag;
 
@@ -30,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         knap.setOnClickListener(this);
         knapGenstart = findViewById(R.id.knapGenstart);
         knapGenstart.setOnClickListener(this);
+        hjælp = findViewById(R.id.hjælp);
+        hjælp.setOnClickListener(this);
 
         textSejre = findViewById(R.id.textSejre);
         textNederlag = findViewById(R.id.textNederlag);
@@ -69,6 +74,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             brugteBogstaver.append(" " + bogstavGæt);
         } else if (v == knapGenstart) {
             genstartSpil();
+        }
+        else if (v == hjælp) {
+            Random random = new Random();
+            String hjælpOrd = spil.getOrdet();
+            int vælgBogstav = random.nextInt(hjælpOrd.length());
+            System.out.println("Random char selected: " + hjælpOrd.charAt(vælgBogstav));
+
+            Toast.makeText(this, "Et af bogstaverne er: " + hjælpOrd.charAt(vælgBogstav), Toast.LENGTH_LONG).show();
+
         }
 
 
