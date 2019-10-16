@@ -25,6 +25,7 @@
         app:layout_constraintVertical_bias="0.645"
         app:srcCompat="@drawable/galge1" />
 
+
     <EditText
         android:id="@+id/bogstav"
         android:layout_width="121dp"
@@ -155,10 +156,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.11" />
 
+
     <Button
         android:id="@+id/hjælp"
         android:layout_width="57dp"
         android:layout_height="51dp"
+        android:background="#add8e6"
         android:text="HJÆLP"
         android:textSize="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -167,5 +170,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.257" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/simon"
+        android:layout_width="355dp"
+        android:layout_height="398dp"
+        android:src="@drawable/simon"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/visGalge"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="-16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

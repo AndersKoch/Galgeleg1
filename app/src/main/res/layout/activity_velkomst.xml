@@ -59,4 +59,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button"
         app:srcCompat="@drawable/galge7" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

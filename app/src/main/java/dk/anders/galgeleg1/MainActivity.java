@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    public ImageView visGalge;
+    public ImageView visGalge, tillykke;
     public Galgelogik spil = new Galgelogik();
     public Random random = new Random();
     public EditText bogstav;
@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         visGalge = findViewById(R.id.visGalge);
+        tillykke = findViewById(R.id.simon);
         bogstav = findViewById(R.id.bogstav);
         knap = findViewById(R.id.knap);
         knap.setOnClickListener(this);
@@ -64,6 +65,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 tælSejr++;
                 textSejre.setText("Sejre: " + tælSejr);
                 knapGenstart.setVisibility(View.VISIBLE);
+                tillykke.setVisibility(View.VISIBLE);
+
             } else if (spil.erSpilletTabt()) { //Sidste gæt var forkert og ordet er ikke gættet
                 Toast.makeText(this, "Så tæt på, men du har tabt! Ordet var: " + spil.getOrdet(), Toast.LENGTH_LONG).show();
                 tælNederlag++;
@@ -88,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void genstartSpil() {
         knapGenstart.setVisibility(View.INVISIBLE);
+        tillykke.setVisibility(View.INVISIBLE);
         spil.nulstil();
         billedeChanger();
         ord.setText(spil.getSynligtOrd());
